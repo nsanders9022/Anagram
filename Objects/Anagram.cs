@@ -6,10 +6,12 @@ namespace AnagramApp.Objects
   public class Anagram
   {
     private string _word;
+     private static List<string> _anagramList = new List<string> {};
 
     public Anagram(string word)
     {
       _word = word;
+      _anagramList = new List<string>{};
     }
 // this will get and set word
     public string GetWord()
@@ -22,13 +24,18 @@ namespace AnagramApp.Objects
       _word = word;
     }
 
+    public List<string> GetArgumentList()
+    {
+      return _anagramList;
+    }
+
 // function for sorting characters into an array
 
     public List<string> Compare(string altWord)
     {
 
       string[] altWordList = altWord.Split(' ');
-      List<string> anagramList = new List<string>{};
+      // List<string> anagramList = new List<string>{};
 
 
       for (int word = 0; word < altWordList.Length; word++)
@@ -58,11 +65,10 @@ namespace AnagramApp.Objects
 
         if (count == wordArray.Length)
         {
-          anagramList.Add(altWordList[word]);
-          Console.WriteLine(anagramList);
+          _anagramList.Add(altWordList[word]);
         }
       }
-      return anagramList;
+      return _anagramList;
 
     }
   }

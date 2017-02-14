@@ -1,0 +1,31 @@
+@{
+  Layout="Shared/_Layout.cshtml";
+}
+<div class="container">
+
+  <div class="row jumbotron">
+    <h1>Anagram</h1>
+  </div>
+
+  <div class="row">
+    <form class="" action="/result" method="post">
+      <label for="word">Enter a Word</label>
+      <input type="text" name="userWord">
+      <label for="word">Enter words to compare</label>
+      <input type="text" name="altWord">
+      <button class="btn" type="submit" name="button">Submit</button>
+    </form>
+  </div>
+
+
+  <div class="row">
+@if (@Model != null)
+{
+  <p>@Model.GetWord()</p>
+
+  @foreach (var word in @Model.GetArgumentList())
+  {
+    <li>@word</li>
+  }
+}
+</div>
