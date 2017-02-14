@@ -30,6 +30,7 @@ namespace AnagramApp.Objects
       string[] altWordList = altWord.Split(' ');
       List<string> anagramList = new List<string>{};
 
+
       for (int word = 0; word < altWordList.Length; word++)
       {
         int count = 0;
@@ -40,13 +41,21 @@ namespace AnagramApp.Objects
         Array.Sort(wordArray);
         Array.Sort(altWordArray);
 
-        for (int i = 0; i < wordArray.Length; i++)
+        if (wordArray.Length == altWordArray.Length)
         {
-          if (wordArray[i] == altWordArray[i])
+          for (int i = 0; i < wordArray.Length; i++)
           {
-          count += 1;
+            if (wordArray[i] == altWordArray[i])
+            {
+            count += 1;
+            }
           }
         }
+        else
+        {
+          break;
+        }
+
         if (count == wordArray.Length)
         {
           anagramList.Add(altWordList[word]);

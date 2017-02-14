@@ -43,5 +43,23 @@ namespace AnagramApp
       resultList.Add("beard");
       Assert.Equal(resultList, result);
     }
+
+    [Fact]
+    public void Compare_twoWordsofDifferentLengths_true()
+    {
+      // arrange
+      string testWord = "bread";
+      string testAltWord = "beard cat";
+      Anagram testAnagram = new Anagram(testWord);
+
+
+      // act
+      List<string> result = testAnagram.Compare(testAltWord);
+
+      // assert
+      List<string> resultList = new List<string>{};
+      resultList.Add("beard");
+      Assert.Equal(resultList, result);
+    }
   }
 }
