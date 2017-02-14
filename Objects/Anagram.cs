@@ -24,33 +24,37 @@ namespace AnagramApp.Objects
 
 // function for sorting characters into an array
 
-    public bool Compare(string altWord)
+    public List<string> Compare(string altWord)
     {
-      int count = 0;
-      string word = GetWord();
-      char[] wordArray = word.ToCharArray();
-      char[] altWordArray = altWord.ToCharArray();
-      Array.Sort(wordArray);
-      Array.Sort(altWordArray);
 
-      Console.WriteLine(wordArray);
-      Console.WriteLine(altWordArray);
+      string[] altWordList = altWord.Split(' ');
+      List<string> anagramList = new List<string>{};
 
-      for (int i = 0; i < wordArray.Length; i++)
+      for (int word = 0; word < altWordList.Length; word++)
       {
-        if (wordArray[i] == altWordArray[i])
+        int count = 0;
+        string userWord = GetWord();
+        Console.WriteLine(userWord);
+        char[] wordArray = userWord.ToCharArray();
+        char[] altWordArray = altWordList[word].ToCharArray();
+        Array.Sort(wordArray);
+        Array.Sort(altWordArray);
+
+        for (int i = 0; i < wordArray.Length; i++)
         {
-        count += 1;
+          if (wordArray[i] == altWordArray[i])
+          {
+          count += 1;
+          }
+        }
+        if (count == wordArray.Length)
+        {
+          anagramList.Add(altWordList[word]);
+          Console.WriteLine(anagramList);
         }
       }
-      if (count == wordArray.Length)
-      {
-        return true;
-      }
-      else
-      {
-        return false;
-      }
+      return anagramList;
+
     }
   }
 }
